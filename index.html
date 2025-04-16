@@ -155,7 +155,11 @@ body button[type="button"] {
     font-family: var(--text-font);
     line-height: 20px;
     margin: 0;
-    padding: 8px 30px 6px;
+    padding: 8px 20px 8px;/*边距*/
+  	/*width: 200px; 
+    text-align: left;
+    padding-left: 10px;  可选：移除默认左内边距 */
+  
 }
 
 body input,
@@ -925,7 +929,7 @@ input[type=range] {
 #volume-control {
     width: 160px;  /* 轨道宽度 */
     height: 0px;  /* 控件总高度 */
-    margin: 5px;
+    margin-right: -36px;
     background: url("assets/track.png") repeat-x;  /* 轨道背景图 */
 }
 
@@ -934,6 +938,7 @@ input[type=range]::-webkit-slider-runnable-track {
     height: 1px;  /* 轨道高度 */
     background: url("assets/track.png") repeat-x;  /* 轨道背景图 */
     /*border-radius: 10px;   圆角匹配轨道高度的一半 */
+   /* margin-top: -18px;   垂直居中调整 */
   
 }
 
@@ -951,7 +956,8 @@ input[type=range]::-webkit-slider-thumb {
     height: 20px;  /* 滑块高度 */
     background: url("assets/thumb.png") no-repeat center; /* 滑块图片 */
     background-size: contain;
-    margin-top: -10px;  /* 垂直居中调整 */
+    margin-top: -10px;   /*垂直居中调整 */
+    border: none;
 }
 
 input[type=range]::-moz-range-thumb {
@@ -961,6 +967,7 @@ input[type=range]::-moz-range-thumb {
     background-size: contain;
     border: none;  /* 移除默认边框 */
 }
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "chs.min.js" */
 /*! chs.js – 简体中文, by: Liyro Pen. | Copyright © 2017 Thomas Michael Edwards <thomasmedwards@gmail.com>. All rights reserved. | Licensed under a BSD 2-clause "Simplified" License. */
 !function(){l10nStrings.identity="游戏",l10nStrings.aborting="终止",l10nStrings.cancel="取消",l10nStrings.close="关闭",l10nStrings.ok="确认",l10nStrings.errorTitle="错误",l10nStrings.errorNonexistentPassage='段落"{passage}"不存在',l10nStrings.errorSaveMissingData="存档缺少必须的数据，可能被读取的文件不是存档或者存档被损坏",l10nStrings.errorSaveIdMismatch="保存{identity}是错误的",l10nStrings._warningIntroLacking="你的浏览器可能损坏或者被禁用",l10nStrings._warningOutroDegraded="，所以{identity}在受限制模式中运行。你可以继续运行，但是一些内容可能不能正确工作。",l10nStrings.warningNoWebStorage="{_warningIntroLacking} Web Storage API {_warningOutroDegraded}",l10nStrings.warningDegraded="{_warningIntroLacking} {identity}需要的功能 {_warningOutroDegraded}",l10nStrings.debugViewTitle="调试模式",l10nStrings.debugViewToggle="切换调试模式",l10nStrings.uiBarToggle="打开/关闭导航栏",l10nStrings.uiBarBackward="后退",l10nStrings.uiBarForward="前进",l10nStrings.uiBarJumpto="跳到{identity}的历史记录中的某一点",l10nStrings.jumptoTitle="跳到",l10nStrings.jumptoTurn="转到",l10nStrings.jumptoUnavailable="目前没有跳跃点…",l10nStrings.savesTitle="存档",l10nStrings.savesDisallowed="在这个段落中不允许存档",l10nStrings.savesEmptySlot="— 插槽空 —",l10nStrings.savesIncapable="{_warningIntroLacking}支持存档所需的功能，因此本次游戏的存档功能已被禁用",l10nStrings.savesLabelAuto="自动存档",l10nStrings.savesLabelDelete="删除",l10nStrings.savesLabelExport="另存为……",l10nStrings.savesLabelImport="读取……",l10nStrings.savesLabelLoad="读取",l10nStrings.savesLabelClear="全部删除",l10nStrings.savesLabelSave="保存",l10nStrings.savesLabelSlot="插槽",l10nStrings.savesSavedOn="保存在：",l10nStrings.savesUnavailable="未找到存档插槽…",l10nStrings.savesUnknownDate="未知",l10nStrings.settingsTitle="设置",l10nStrings.settingsOff="关闭",l10nStrings.settingsOn="开启",l10nStrings.settingsReset="重置为默认值",l10nStrings.restartTitle="重新开始",l10nStrings.restartPrompt="你确定要重新开始吗？未保存的进度将会丢失。",l10nStrings.shareTitle="分享",l10nStrings.autoloadTitle="自动保存",l10nStrings.autoloadCancel="前往最初的段落",l10nStrings.autoloadOk="读取自动存档",l10nStrings.autoloadPrompt="有一个自动存档，读取它还是前往最初的段落？",l10nStrings.macroBackText="返回",l10nStrings.macroReturnText="返回"}();
@@ -1575,7 +1582,97 @@ setup.SoundPath = setup.Path + "music/";
 			console.error('This version of SugarCube does not include the `Settings.addRange()` method; please try updating to the latest version of SugarCube.');
 		}
 	}
-}());</script><tw-passagedata pid="1" name="开始" tags="" position="775,300" size="100,100">&lt;&lt;masteraudio stop&gt;&gt;&lt;&lt;audio &quot;Piano&quot; volume 0.65 play loop&gt;&gt;&lt;img src=&quot;assets/Best_Friends.png&quot;  style=&quot;width: 100%; height: auto; display: block; margin: 0 auto;&quot;&gt;
+}());
+
+
+// dialog API macro set, by chapel; for sugarcube 2
+// version 1.3.0
+// see the documentation: https://github.com/ChapelR/custom-macros-for-sugarcube-2#dialog-api-macros
+// <<dialog>> macro
+Macro.add('dialog', {
+       tags : ['onopen', 'onclose'],
+    handler : function () {
+        
+        // handle args (if any)
+        var errors = [];
+        var content = '', onOpen = null, onClose = null;
+        var title = (this.args.length > 0) ? this.args[0] : '';
+        var classes = (this.args.length > 1) ? this.args.slice(1).flatten() : [];
+
+        this.payload.forEach( function (pl, idx) {
+            if (idx === 0) {
+                content = pl.contents;
+            } else {
+                if (pl.name === 'onopen') {
+                    onOpen = onOpen ? onOpen + pl.contents : pl.contents;
+                } else {
+                    onClose = onClose ? onClose + pl.contents : pl.contents;
+                }
+            }
+        });
+        
+        // add the macro- class
+        classes.push('macro-' + this.name);
+        
+        // dialog box
+        Dialog.setup(title, classes.join(' '));
+        Dialog.wiki(content);
+
+        // should these be shadowWrapper-aware?
+        if (onOpen && typeof onOpen === 'string' && onOpen.trim()) {
+            $(document).one(':dialogopened', function () {
+                $.wiki(onOpen);
+            });
+        }
+
+        if (onClose && typeof onClose === 'string' && onClose.trim()) {
+            $(document).one(':dialogclosed', function () {
+                $.wiki(onClose);
+            });
+        }
+
+        Dialog.open();
+        
+    }
+
+});
+
+// <<popup>> macro
+Macro.add('popup', {
+    handler : function () {
+        
+        // errors
+        if (this.args.length < 1) {
+            return this.error('need at least one argument; the passage to display');
+        }
+        if (!Story.has(this.args[0])) {
+            return this.error('the passage ' + this.args[0] + 'does not exist');
+        }
+        
+        // passage name and title
+        var psg   = this.args[0];
+        var title = (this.args.length > 1) ? this.args[1] : '';
+        var classes = (this.args.length > 2) ? this.args.slice(2).flatten() : [];
+        
+        // add the macro- class
+        classes.push('macro-' + this.name);
+        
+        // dialog box
+        Dialog.setup(title, classes.join(' '));
+        Dialog.wiki(Story.get(psg).processText());
+        Dialog.open();
+        
+    }
+
+});
+
+// <<dialogclose>> macro
+Macro.add('dialogclose', { 
+    skipArgs : true, 
+    handler : function () {
+        Dialog.close();
+    } 
+});</script><tw-tag name="行动" color="blue"></tw-tag><tw-tag name="暧昧" color="orange"></tw-tag><tw-tag name="理性" color="blue"></tw-tag><tw-tag name="感性" color="orange"></tw-tag><tw-passagedata pid="1" name="开始" tags="" position="775,300" size="100,100">&lt;&lt;masteraudio stop&gt;&gt;&lt;&lt;audio &quot;Piano&quot; volume 0.65 play loop&gt;&gt;&lt;img src=&quot;assets/Best_Friends.png&quot;  style=&quot;width: 100%; height: auto; display: block; margin: 0 auto;&quot;&gt;
 &lt;div class=&quot;deco-line&quot;&gt;特别说明&lt;/div&gt;\
 本作是基于Onker同人文《未保存进度》的文字互动游戏。
 
@@ -1584,8 +1681,11 @@ setup.SoundPath = setup.Path + "music/";
 &lt;&lt;button &quot;了解&quot; &quot;梦中&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;/*[[梦中]]*/
 
 &lt;div class=&quot;deco-line&quot;&gt;更新日志&lt;/div&gt;\
+v20250416.1：
+- 新增[[红点-书柜|监视]]线剧情
+
 v20250415.1：
-- 新增[[窗户]]分支剧情
+- 新增[[红点-窗户|窗户]]线剧情
 
 v20250414.1：
 - 优化UI
@@ -1642,7 +1742,7 @@ v20250413.2：
 &lt;&lt;/linkappend&gt;&gt;
 @@
 
- </tw-passagedata><tw-passagedata pid="3" name="铁链" tags="" position="875,450" size="100,100">&lt;&lt;script&gt;&gt;$(document).one(&#39;:passagerender&#39;, function (ev) {
+ </tw-passagedata><tw-passagedata pid="3" name="铁链" tags="理性" position="875,450" size="100,100">&lt;&lt;script&gt;&gt;$(document).one(&#39;:passagerender&#39;, function (ev) {
 	$(ev.content).find(&quot;#blinky&quot;).fadeTo(1000, 0).fadeTo(1000, 1).delay(200).fadeTo(1000, 0).fadeTo(1000, 1).delay(200).fadeTo(1000, 0).fadeTo(1000, 1);	
 });&lt;&lt;/script&gt;&gt;&#39;&#39;&lt;font color=white&gt;李相赫&lt;/font&gt;&#39;&#39; - 
 他随意迈开一步，铁链就跟着拖拽，直到走到门边才发出&lt;&lt;shake 2s&gt;&gt;“&lt;font color=#C53515&gt;噌&lt;/font&gt;”&lt;&lt;/shake&gt;&gt;的一声脆响，绷直的铁链一头固定在床头，一头铐住了他的脚踝。
@@ -1658,7 +1758,7 @@ v20250413.2：
 #[[书桌上是什么？|书桌]]
 
 &lt;&lt;/linkappend&gt;&gt;@@
-</tw-passagedata><tw-passagedata pid="4" name="早安吻" tags="" position="1025,450" size="100,100">&#39;&#39;&lt;font color=white&gt;李相赫&lt;/font&gt;&#39;&#39; - 
+</tw-passagedata><tw-passagedata pid="4" name="早安吻" tags="感性" position="1150,450" size="100,100">&#39;&#39;&lt;font color=white&gt;李相赫&lt;/font&gt;&#39;&#39; - 
 模模糊糊中，有股//&lt;font color=#cb3a56&gt;灼热的呼吸&lt;/font&gt;//洒在耳边，&#39;&#39;&lt;font color=white&gt;他&lt;/font&gt;&#39;&#39;刚睁开眼，一道影子就压上来，紧接着柔软相互摩擦，身体违背了大脑，仍由对方掠夺走口腔内的氧气。
 &lt;&lt;type 90ms&gt;&gt;//渐渐的，&lt;font color=#cb3a56&gt;黏黏糊糊&lt;/font&gt;的呻吟从喉咙溢出……//&lt;&lt;/type&gt;&gt;
 
@@ -2420,6 +2520,9 @@ a.link-external::after {
 
 图片&lt;img src=&quot;assets/doll.png&quot; style=&quot;width: 150px; height: auto;&quot;&gt;
 
+&lt;&lt;link [img[assets/book_dick.png][On with the story]]&gt;&gt;&lt;&lt;/link&gt;&gt;
+[img[玩偶|assets/doll2.png][摄像头]]/*[[摄像头]]*/
+
 &lt;div class=&quot;bg-box&quot;&gt;
   这里是半透明黑底白边的文字内容...
   支持多行和&lt;&lt;宏&gt;&gt;，例如：&lt;&lt;button &quot;点击&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
@@ -2487,7 +2590,7 @@ I saw a &lt;span id=&quot;dog&quot;&gt;Catahoula Cur&lt;/span&gt;.
 
 &lt;span id=&quot;test&quot;&gt;111111&lt;/span&gt;
 &lt;&lt;link &quot;111&quot; &gt;&gt;&lt;&lt;replace &quot;#test&quot; t8n&gt;&gt;shaya&lt;&lt;/replace&gt;&gt;&lt;&lt;/link&gt;&gt;
-</tw-passagedata><tw-passagedata pid="10" name="白发青年" tags="" position="1025,600" size="100,100">&lt;&lt;button &quot;返回&quot; &quot;开始&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;/*[[开始]]*</tw-passagedata><tw-passagedata pid="11" name="墙" tags="" position="475,675" size="100,100">&lt;&lt;set $option_1= true&gt;&gt;&#39;&#39;&lt;font color=white&gt;门窗&lt;/font&gt;&#39;&#39; - 
+</tw-passagedata><tw-passagedata pid="10" name="白发青年" tags="" position="1150,625" size="100,100">&lt;&lt;button &quot;返回&quot; &quot;开始&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;/*[[开始]]*</tw-passagedata><tw-passagedata pid="11" name="墙" tags="" position="475,675" size="100,100">&lt;&lt;set $option_1= true&gt;&gt;&#39;&#39;&lt;font color=white&gt;门窗&lt;/font&gt;&#39;&#39; - 
 很不幸，它异常的坚固。
 
 &lt;&lt;linkappend &quot;沿着墙壁摸索。&quot; t8n&gt;&gt;
@@ -2876,7 +2979,7 @@ bug或者建议欢迎评论或者私信~
 
 [img[玩偶|assets/doll2.png][摄像头]]/*[[摄像头]]*/
 ~~[点击图片]~~
-
+&lt;&lt;link [img[assets/book_dick.png][On with the story]]&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/replace&gt;&gt;&lt;&lt;/linkappend&gt;&gt;上。~~[点击黄色文字]~~
 
 &lt;span id=&quot;doll&quot;&gt;&lt;/span&gt;
@@ -2899,7 +3002,7 @@ bug或者建议欢迎评论或者私信~
 
 当务之急是掌握屋子内的所有信息，这里能藏匿的地点不多，又他//&lt;font color=#6F5FC1&gt;视线&lt;/font&gt;//差不多的高度，那只能是——
 #[[窗户|窗户]]
-#[[书柜（待写）|监视]]
+#[[书柜|监视]]
 &lt;&lt;/fadein&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;/linkappend&gt;&gt;
 &lt;span id=&quot;camera&quot;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="21" name="窗户" tags="" position="450,1275" size="100,100">&#39;&#39;&lt;font color=white&gt;李相赫&lt;/font&gt;&#39;&#39; - 
@@ -2953,7 +3056,50 @@ bug或者建议欢迎评论或者私信~
 
 &lt;&lt;/linkappend&gt;&gt;
 &lt;&lt;/linkappend&gt;&gt;
-</tw-passagedata><tw-passagedata pid="22" name="监视" tags="" position="900,1275" size="100,100"></tw-passagedata><tw-passagedata pid="23" name="StoryCaption" tags="" position="1175,100" size="100,100">&#39;&#39;音 乐&#39;&#39;&lt;&lt;volume&gt;&gt;
+</tw-passagedata><tw-passagedata pid="22" name="监视" tags="" position="875,1275" size="100,100">&#39;&#39;&lt;font color=white&gt;李相赫&lt;/font&gt;&#39;&#39; - 
+仔细一看在书里藏//&lt;font color=#C53515&gt;摄像头&lt;/font&gt;//的想法并不高明，他的手指沿着书脊滑动，很快就找到了那本只有封面的空壳。
+    
+藏在这里用书做//&lt;font color=#6F5FC1&gt;掩护&lt;/font&gt;//，稍微留心点就能发现，不知道是愚蠢还是无所谓。或许对方也同样纠结监视的问题，想让他知道又希望他不知道，才会如此潦草地放置。
+
+&lt;&lt;linkappend &quot;假装读书。&quot; t8n&gt;&gt;
+
+&#39;&#39;&lt;font color=white&gt;李相赫&lt;/font&gt;&#39;&#39; - 
+他越过藏着摄像头的书本，拿走一侧的另一本，靠着床沿坐在地上//&lt;font color=#6F5FC1&gt;阅读&lt;/font&gt;//。镜头仍旧固定在他身上，可能有一双不知名的眼睛正观察着一切。
+
+他沉下心，摆弄书页。
+
+&#39;&#39;&lt;font color=white&gt;有痕迹的书&lt;/font&gt;&#39;&#39; - 
+这些书早被人翻阅过，合上的时候能看到长时间摊开后留下的缝隙，书角也带有折痕——前主人看书的习惯似乎和他//一模一样//，就像是同一个人留下的//&lt;font color=#C53515&gt;痕迹&lt;/font&gt;//……
+
+&lt;&lt;link [img[assets/book_dick.png]]&gt;&gt;
+ &lt;&lt;dialog &#39;迪克·马伦与错误身份&#39;&gt;&gt;\
+又是一部严重歪曲警察工作的迪克·马伦系列作品。在这本书里，我们的警探在成功破获了一起百年悬案之后归来，却发现自己又卷入了一起新案件。他终于要承认这份职业的繁重本质了吗？不！他看起来根本就不像个普通警察。~~[源自极乐迪斯科]~~
+&lt;&lt;onclose&gt;&gt;&lt;&lt;replace &quot;#book&quot;&gt;&gt;&#39;&#39;&lt;font color=white&gt;有痕迹的书&lt;/font&gt;&#39;&#39; - 
+书的名字和内容都是//&lt;font color=#6F5FC1&gt;陌生&lt;/font&gt;//的，他没有买过也没有看过这些书。
+
+这一系列发现让人惶恐又绝望，周围的一切都是谜团，却又时刻在提醒他早//属于//这里。
+
+&lt;&lt;button &quot;继续&quot; &quot;脚步&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;/*[[脚步]]*/
+&lt;&lt;/replace&gt;&gt;
+ &lt;&lt;/dialog&gt;&gt;
+&lt;&lt;/link&gt;&gt;\
+&lt;&lt;link [img[assets/book_hjelmdevil.png]]&gt;&gt;
+ &lt;&lt;dialog &#39;来自赫姆达尔的男人与魔女&#39;&gt;&gt;\
+这本破旧平装书的卷首插画是一个被锁链缠绕的肌肉男，正跪在一个神情轻浮的女人的王座之前。王座和男人之间有一堆篝火，在周围的墙壁上投下阴影——魔女头饰的阴影看起来就像一对恶魔角……~~[源自极乐迪斯科]~~
+&lt;&lt;onclose&gt;&gt;&lt;&lt;replace &quot;#book&quot;&gt;&gt;&#39;&#39;&lt;font color=white&gt;有痕迹的书&lt;/font&gt;&#39;&#39; - 
+书的名字和内容都是//&lt;font color=#6F5FC1&gt;陌生&lt;/font&gt;//的，他没有买过也没有看过这些书。
+
+这一系列发现让人惶恐又绝望，周围的一切都是谜团，却又时刻在提醒他早//属于//这里。
+
+&lt;&lt;button &quot;继续&quot; &quot;脚步&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;/*[[脚步]]*/
+&lt;&lt;/replace&gt;&gt;
+ &lt;&lt;/dialog&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;&lt;nobr&gt;&gt;&lt;&lt;/nobr&gt;&gt;
+~~[点击图片]~~
+
+&lt;div id=&quot;book&quot;&gt;&lt;/div&gt;
+&lt;&lt;/linkappend&gt;&gt;
+</tw-passagedata><tw-passagedata pid="23" name="StoryCaption" tags="" position="1175,100" size="100,100">&lt;img src=&quot;assets/652.png&quot; style=&quot;width: 24px; height: auto;margin-top: 20px;margin-bottom: -5px;&quot;&gt;&lt;&lt;volume&gt;&gt;
 
 </tw-passagedata><tw-passagedata pid="24" name="未命名片段 1" tags="" position="550,300" size="100,100"></tw-passagedata><tw-passagedata pid="25" name="求救" tags="" position="225,1475" size="100,100">&#39;&#39;&lt;font color=white&gt;李相赫&lt;/font&gt;&#39;&#39; - 
 他像破土而出的草，拼命将手伸出牢笼，手指在空中伸展着，马上就要//&lt;font color=#E64F17&gt;抓住&lt;/font&gt;//那只鞋子了。
@@ -3152,6 +3298,65 @@ bug或者建议欢迎评论或者私信~
 &lt;&lt;fadein 2s  3s&gt;&gt;&lt;h4&gt;&lt;font color=#C53515&gt;哒！&lt;/font&gt;&lt;/h4&gt;&lt;&lt;/fadein&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;&lt;&lt;fadein 2s 4s&gt;&gt; &lt;h3&gt;&lt;font color=#C53515&gt;哒！&lt;/font&gt;&lt;/h3&gt;&lt;&lt;/fadein&gt;&gt;\
 &lt;&lt;fadein 2s 6s&gt;&gt;是//&lt;font color=#C53515&gt;脚步声&lt;/font&gt;//。
+
+&lt;&lt;shake 10s&gt;&gt;&lt;font color=#C53515&gt;那个人来找他了！&lt;/font&gt;&lt;&lt;/shake&gt;&gt;
+
+&lt;&lt;button &quot;继续&quot; &quot;年轻男人&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;/*[[年轻男人]]*/&lt;&lt;/fadein&gt;&gt;
+&lt;&lt;/linkappend&gt;&gt;
+&lt;&lt;/replace&gt;&gt;&lt;&lt;replace &quot;#otherhandlinks&quot;&gt;&gt;#&lt;span class=&quot;disabled&quot;&gt;书柜。&lt;/span&gt;
+#&lt;span class=&quot;disabled&quot;&gt;小熊。&lt;/span&gt;
+&lt;&lt;/replace&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;&lt;&lt;else&gt;&gt;&lt;span class=&quot;disabled&quot;&gt;书柜。&lt;/span&gt;&lt;span class=&quot;disabled&quot;&gt;小熊。&lt;/span&gt;&lt;&lt;/if&gt;&gt;&lt;/span&gt;\
+&lt;div id=&quot;otherhandLinkArea&quot;&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="30" name="脚步" tags="" position="875,1475" size="100,100">&#39;&#39;&lt;font color=white&gt;李相赫&lt;/font&gt;&#39;&#39; - 
+他心里一团乱，有些//&lt;font color=#6F5FC1&gt;疲惫&lt;/font&gt;//地闭眼靠在床边。再次睁眼时，在颠倒的世界里，有个//&lt;font color=#E64F17&gt;黄色的东西&lt;/font&gt;//引起了他的注意。
+
+&#39;&#39;&lt;font color=white&gt;铃铛&lt;/font&gt;&#39;&#39; - 
+这是玩偶旁边、床上的另一件物品——//&lt;font color=#E64F17&gt;铃铛&lt;/font&gt;//。
+
+任何东西都有存在的理由。
+
+和它有关联的是什么呢？&lt;span id=&quot;otherhandlinks&quot;&gt; &lt;&lt;if !$otherhandselected&gt;&gt;
+#&lt;&lt;linkreplace &quot;书柜。&quot; t8n&gt;&gt;&lt;&lt;set $otherhandselected = true&gt;&gt;&lt;&lt;set $otherhandSelectNum = 1&gt;&gt;&lt;&lt;if $otherhandSelectNum == 1&gt;&gt;&lt;&lt;replace &quot;#otherhandLinkArea&quot;&gt;&gt;&#39;&#39;&lt;font color=white&gt;李相赫&lt;/font&gt;&#39;&#39; - 
+他举起铃铛像是驱魔一样在书柜前来回//晃动//。
+铃铛发出轻微的“//&lt;font color=#E64F17&gt;叮铃&lt;/font&gt;//”声，宛如湖面上散开的水波在屋内回荡。
+
+&#39;&#39;&lt;font color=white&gt;书柜&lt;/font&gt;&#39;&#39; - 
+人类，后面没有//暗门//。
+
+&#39;&#39;&lt;font color=white&gt;李相赫&lt;/font&gt;&#39;&#39; - 
+他当然//&lt;font color=#6F5FC1&gt;知道&lt;/font&gt;//，只是想给自己找点乐子。
+
+&lt;&lt;linkappend &quot;放下铃铛。&quot; t8n&gt;&gt; 
+
+铃声湮灭，取而代之的是——
+
+&lt;img src=&quot;assets/footstep-2.png&quot; style=&quot;width: 250px; height: auto;&quot;&gt;
+
+&lt;&lt;fadein 2s  2s&gt;&gt;是//&lt;font color=#C53515&gt;脚步声&lt;/font&gt;//
+
+&lt;&lt;shake 10s&gt;&gt;&lt;font color=#C53515&gt;那个人来找他了！&lt;/font&gt;&lt;&lt;/shake&gt;&gt;
+
+&lt;&lt;button &quot;继续&quot; &quot;年轻男人&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;/*[[年轻男人]]*/&lt;&lt;/fadein&gt;&gt;
+ &lt;&lt;/linkappend&gt;&gt;
+&lt;&lt;/replace&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;replace &quot;#otherhandlinks&quot;&gt;&gt;\
+#&lt;span class=&quot;disabled&quot;&gt;书柜。&lt;/span&gt;
+#&lt;span class=&quot;disabled&quot;&gt;小熊。&lt;/span&gt;&lt;&lt;/replace&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+#&lt;&lt;linkreplace &quot;小熊。&quot; t8n&gt;&gt;&lt;&lt;set $otherhandselected = true&gt;&gt;&lt;&lt;set $otherhandSelectNum = 2&gt;&gt;&lt;&lt;replace &quot;#otherhandLinkArea&quot;&gt;&gt;&#39;&#39;&lt;font color=white&gt;李相赫&lt;/font&gt;&#39;&#39; - 
+他将铃铛捧在手里仔细揣摩，突然有个奇妙的想法——玩偶里不是摄像头而且//&lt;font color=#C53515&gt;监听器&lt;/font&gt;//。
+
+&#39;&#39;&lt;font color=white&gt;铃铛&lt;/font&gt;&#39;&#39; - 
+这是一个决定他生死的//按钮//，召唤来的是天使还是恶魔，是真相还是另一个谜团？
+
+没有太多时间了，他一定要//&lt;font color=#C53515&gt;逃离&lt;/font&gt;//这里！
+
+&lt;&lt;linkappend &quot;晃动铃铛。&quot; t8n&gt;&gt; 
+
+&#39;&#39;&lt;font color=white&gt;铃铛&lt;/font&gt;&#39;&#39; - 
+铃铛发出轻微的“//&lt;font color=#E64F17&gt;叮铃&lt;/font&gt;//”声，宛如湖面上散开的水波在屋内回荡，声音越来越小，直到……
+
+&lt;&lt;fadein 2s  2s&gt;&gt;&lt;img src=&quot;assets/footstep-2.png&quot; style=&quot;width: 250px; height: auto;&quot;&gt;
+
+是//&lt;font color=#C53515&gt;脚步声&lt;/font&gt;//
 
 &lt;&lt;shake 10s&gt;&gt;&lt;font color=#C53515&gt;那个人来找他了！&lt;/font&gt;&lt;&lt;/shake&gt;&gt;
 
