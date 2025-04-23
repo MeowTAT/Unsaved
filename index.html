@@ -1483,7 +1483,30 @@ html[data-init="loading"] #story {
     clip-path: polygon(0 23px, 100% 23px, 100% 75px, 0 75px);
   }
 }
-/* Glitchy Text - End */</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "chs.min.js" */
+/* Glitchy Text - End */
+
+.say {
+    border: 1px solid #eee;
+    overflow: auto;
+}
+
+/*对话框*/
+.say > img {
+    max-width: 20%;
+    float: left;
+    margin-right: 1em;
+}
+
+.say > p:first-of-type {
+    font-weight: bold;
+    margin: 0.2em 0;
+    border-bottom: 1px solid #eee;
+}
+
+.say > p:last-of-type {
+    padding: 0.5em;
+    margin: 0;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "chs.min.js" */
 /*! chs.js – 简体中文, by: Liyro Pen. | Copyright © 2017 Thomas Michael Edwards <thomasmedwards@gmail.com>. All rights reserved. | Licensed under a BSD 2-clause "Simplified" License. */
 !function(){l10nStrings.identity="游戏",l10nStrings.aborting="终止",l10nStrings.cancel="取消",l10nStrings.close="关闭",l10nStrings.ok="确认",l10nStrings.errorTitle="错误",l10nStrings.errorNonexistentPassage='段落"{passage}"不存在',l10nStrings.errorSaveMissingData="存档缺少必须的数据，可能被读取的文件不是存档或者存档被损坏",l10nStrings.errorSaveIdMismatch="保存{identity}是错误的",l10nStrings._warningIntroLacking="你的浏览器可能损坏或者被禁用",l10nStrings._warningOutroDegraded="，所以{identity}在受限制模式中运行。你可以继续运行，但是一些内容可能不能正确工作。",l10nStrings.warningNoWebStorage="{_warningIntroLacking} Web Storage API {_warningOutroDegraded}",l10nStrings.warningDegraded="{_warningIntroLacking} {identity}需要的功能 {_warningOutroDegraded}",l10nStrings.debugViewTitle="调试模式",l10nStrings.debugViewToggle="切换调试模式",l10nStrings.uiBarToggle="打开/关闭导航栏",l10nStrings.uiBarBackward="后退",l10nStrings.uiBarForward="前进",l10nStrings.uiBarJumpto="跳到{identity}的历史记录中的某一点",l10nStrings.jumptoTitle="跳到",l10nStrings.jumptoTurn="转到",l10nStrings.jumptoUnavailable="目前没有跳跃点…",l10nStrings.savesTitle="存档",l10nStrings.savesDisallowed="在这个段落中不允许存档",l10nStrings.savesEmptySlot="— 插槽空 —",l10nStrings.savesIncapable="{_warningIntroLacking}支持存档所需的功能，因此本次游戏的存档功能已被禁用",l10nStrings.savesLabelAuto="自动存档",l10nStrings.savesLabelDelete="删除",l10nStrings.savesLabelExport="另存为……",l10nStrings.savesLabelImport="读取……",l10nStrings.savesLabelLoad="读取",l10nStrings.savesLabelClear="全部删除",l10nStrings.savesLabelSave="保存",l10nStrings.savesLabelSlot="插槽",l10nStrings.savesSavedOn="保存在：",l10nStrings.savesUnavailable="未找到存档插槽…",l10nStrings.savesUnknownDate="未知",l10nStrings.settingsTitle="设置",l10nStrings.settingsOff="关闭",l10nStrings.settingsOn="开启",l10nStrings.settingsReset="重置为默认值",l10nStrings.restartTitle="重新开始",l10nStrings.restartPrompt="你确定要重新开始吗？未保存的进度将会丢失。",l10nStrings.shareTitle="分享",l10nStrings.autoloadTitle="自动保存",l10nStrings.autoloadCancel="前往最初的段落",l10nStrings.autoloadOk="读取自动存档",l10nStrings.autoloadPrompt="有一个自动存档，读取它还是前往最初的段落？",l10nStrings.macroBackText="返回",l10nStrings.macroReturnText="返回"}();
 /* twine-user-script #2: "config.js" */
@@ -1493,6 +1516,248 @@ Config.saves.slots = 8;
 Config.saves.autosave = false;
 Config.addVisitedLinkClass = false;
 Config.ui.stowBarInitially = 800;
+
+
+/***********************************************************************************************************************
+
+	chs.js – 简体中文
+
+	Localization by: sister-Pa.
+
+	Copyright © 2019–2021 Thomas Michael Edwards <thomasmedwards@gmail.com>. All rights reserved.
+	Use of this source code is governed by a BSD 2-clause "Simplified" License, which may be found in the LICENSE file.
+
+	For more information about the guidelines used to create this localization, see:
+		http://www.motoslave.net/sugarcube/2/docs/#guide-localization
+
+***********************************************************************************************************************/
+/* global l10nStrings */
+/* eslint-disable strict */
+
+(function () {
+	/*******************************************************************************
+		常规设置
+	*******************************************************************************/
+
+	l10nStrings.textAbort = '中止';
+
+	l10nStrings.textAborting = '终止';
+
+	l10nStrings.textCancel = '删除';
+
+	l10nStrings.textClear = '清除';
+
+	l10nStrings.textClose = '关闭';
+
+	l10nStrings.textDelete = '删除';
+
+	l10nStrings.textExport = '导出';
+
+	l10nStrings.textIdentity = '游戏';
+
+	l10nStrings.textImport = '导入';
+
+	l10nStrings.textLoad = '加载';
+
+	l10nStrings.textOff = '关闭';
+
+	l10nStrings.textOk = '好的';
+
+	l10nStrings.textOn = '打开';
+
+	l10nStrings.textSave = '保存';
+
+	l10nStrings.textTurn = '转向';
+
+
+	/*******************************************************************************
+		报错
+	*******************************************************************************/
+
+	l10nStrings.errorNonexistentPassage = '片段 "{passage}" 并不存在';
+
+
+	/*******************************************************************************
+		警告
+	*******************************************************************************/
+
+	l10nStrings.warningNoStorage = '缺少所有可用的存储API。出错可能是因为禁用了第三方的cookie设置，这也会影响web存储或隐私浏览模式';
+
+	l10nStrings.warningNoWebStorage = '缺少web存储API，因此这个{textIdentity}会以降级模式运行。您也许可以继续，但是某些部件可能无法正常工作。';
+
+	l10nStrings.warningDegraded = '缺少支持这个{textIdentity}所需的一些功能，因此它会以降级模式运行。您也许可以继续，但是某些部件可能无法正常工作。';
+
+	l10nStrings.warningNoSaves = '缺少支持保存所需的某些功能，因此这个会话已禁用保存。';
+
+
+	/*******************************************************************************
+		API: 保存
+	*******************************************************************************/
+
+	l10nStrings.saveErrorDisallowed = '目前不允许保存';
+
+	l10nStrings.saveErrorDecodeFail = '无法解码保存，可能是由于损坏';
+
+	l10nStrings.saveErrorDiskLoadFail = '无法从磁盘加载保存文件';
+
+	l10nStrings.saveErrorIdMismatch = '从错误的{textIdentity}保存';
+
+	l10nStrings.saveErrorInvalidData = '保存时缺少所需数据，可能是由于损坏造成的';
+
+	l10nStrings.saveErrorNonexistent = '保存不存在';
+
+
+	/*******************************************************************************
+		基础 UI.
+	*******************************************************************************/
+
+	l10nStrings.uiBarLabelToggle = '切换侧边栏';
+
+	l10nStrings.uiBarLabelBackward = '回溯 {textIdentity} 历史记录';
+
+	l10nStrings.uiBarLabelForward = '在 {textIdentity} 历史记录中向前移动';
+
+	// [已弃用]
+	l10nStrings.uiBarLabelJumpto = '跳转到 {textIdentity} 历史记录中的特定点';
+
+
+	/*******************************************************************************
+		弹出框：警报
+	*******************************************************************************/
+
+	l10nStrings.alertTitle = '警告';
+
+
+	/*******************************************************************************
+		弹出框：重新开始
+	*******************************************************************************/
+
+	l10nStrings.restartTitle = '重新开始';
+
+	l10nStrings.restartMesgPrompt = '所有未保存的进度都将丢失，你确定要重新开始吗？';
+
+
+	/*******************************************************************************
+		弹出框：保存
+	*******************************************************************************/
+
+	l10nStrings.continueTitle = '继续';
+
+	l10nStrings.savesTitle = '存档';
+
+	l10nStrings.savesHeaderBrowser = '在浏览器内';
+
+	l10nStrings.savesHeaderDisk = '在磁盘上';
+
+	l10nStrings.savesLabelBrowserClear = '清除所有浏览器保存的内容';
+
+	l10nStrings.savesLabelBrowserExport = '将浏览器存档导出为捆绑包';
+
+	l10nStrings.savesLabelBrowserImport = '从捆绑包中导入浏览器存档';
+
+	l10nStrings.savesLabelDiskLoad = '从磁盘加载';
+
+	l10nStrings.savesLabelDiskSave = '保存到磁盘';
+
+	l10nStrings.savesTextBrowserAuto = '自动';
+
+	l10nStrings.savesTextBrowserSlot = '存档槽';
+
+	l10nStrings.savesTextNoDate = '未知';
+
+
+	/*******************************************************************************
+		弹出框：设置
+	*******************************************************************************/
+
+	l10nStrings.settingsTitle = '设置';
+
+	l10nStrings.settingsTextReset = '重置为默认值';
+
+
+	/*******************************************************************************
+		调试：错误视图
+	*******************************************************************************/
+
+	l10nStrings.errorViewTitle = '错误';
+
+	l10nStrings.errorViewLabelToggle = '切换错误视图';
+
+
+	/*******************************************************************************
+		调试：调试栏
+	*******************************************************************************/
+
+	l10nStrings.debugBarLabelToggle = '切换调试栏';
+
+	l10nStrings.debugBarLabelViewsToggle = '切换调试视图';
+
+	l10nStrings.debugBarLabelWatchAdd = '添加新的监控';
+
+	l10nStrings.debugBarLabelWatchAll = '全部监控';
+
+	l10nStrings.debugBarLabelWatchClear = '清除所有监控';
+
+	l10nStrings.debugBarLabelWatchDelete = '删除此监控';
+
+	l10nStrings.debugBarLabelWatchPlaceholder = '变量名';
+
+	l10nStrings.debugBarLabelPassagePlaceholder = '片段名';
+
+	l10nStrings.debugBarLabelPassagePlay = '播放片段';
+
+	l10nStrings.debugBarLabelWatchToggle = '切换监控视图';
+
+	l10nStrings.debugBarMesgNoWatches = '未设置监控';
+
+	l10nStrings.debugBarTextAdd = '添加';
+
+	l10nStrings.debugBarTextPassage = '片段';
+
+	l10nStrings.debugBarTextViews = '代码';
+
+	l10nStrings.debugBarTextWatch = '监控';
+
+
+	/*******************************************************************************
+		宏
+	*******************************************************************************/
+
+	// 后退、还原
+	l10nStrings.macroBackText = '后退';
+
+	// 返回、转回
+	l10nStrings.macroReturnText = '返回';
+
+
+	/*******************************************************************************
+		[已弃用] 弹出框：自动加载
+	*******************************************************************************/
+
+	l10nStrings.autoloadTitle = '自动加载';
+
+	l10nStrings.autoloadMesgPrompt = '存在自动保存。现在加载还是从头开始？';
+
+	l10nStrings.autoloadTextCancel = '从头开始';
+
+	l10nStrings.autoloadTextOk = '加载自动保存';
+
+
+	/*******************************************************************************
+		[已弃用] 弹出框：跳转到
+	*******************************************************************************/
+
+	l10nStrings.jumptoTitle = '跳转到';
+
+	l10nStrings.jumptoMesgUnavailable = '目前没有可用的跳转点\u2026';
+
+
+	/*******************************************************************************
+		[已弃用] 弹出框：分享
+	*******************************************************************************/
+
+	l10nStrings.shareTitle = '分享';
+})();
 
 
 /* 延时文本 */
@@ -2263,7 +2528,99 @@ Macro.add('message', {
             .append($content)
             .appendTo(this.output);
     }
-});</script><tw-tag name="行动" color="blue"></tw-tag><tw-tag name="暧昧" color="orange"></tw-tag><tw-tag name="理性" color="blue"></tw-tag><tw-tag name="感性" color="orange"></tw-tag><tw-tag name="章节" color="red"></tw-tag><tw-passagedata pid="1" name="开始" tags="" position="525,300" size="100,100">&lt;&lt;masteraudio stop&gt;&gt;&lt;&lt;audio &quot;Piano&quot; volume 0.65 play loop&gt;&gt;&lt;img src=&quot;assets/Best_Friends.png&quot;  style=&quot;width: 100%; height: auto; display: block; margin: 0 auto;&quot;&gt;
+});
+
+
+//对话框
+(function () {
+    // v1.1.1
+    'use strict';
+
+    var characters = new Map();
+
+    function addCharacter (name, displayname, icon) {
+		if(icon === undefined && displayname){
+			icon = displayname;
+			displayname = null;
+		}
+        if (State.length) {
+            throw new Error('addCharacter() -> must be called before story starts');
+        }
+        if (!name || !icon) {
+            console.error('addCharacter() -> invalid arguments');
+            return;
+        }
+        if (characters.has(name)) {
+            console.error('addCharacter() -> overwriting character "' + name + '"');
+        }
+        characters.set(name, {displayName: displayname, image: icon});
+    }
+
+    function say ($output, character, text, imgSrc) {
+        // 
+        var $box = $(document.createElement('div'))
+            .addClass(Util.slugify(character) + ' say');
+
+			
+        // portrait
+        var _img = characters.has(character) ? characters.get(character).image : null;        
+        var $img = $(document.createElement('img'))
+            .attr('src', imgSrc || _img || '');
+
+        if ($img.attr('src') && $img.attr('src').trim()) {
+            $box.append($img);
+        }
+
+        // name and content boxes
+		var _name =  character.toUpperFirst();
+		if (characters.has(character) && characters.get(character).displayName) {
+            _name = characters.get(character).displayName;
+        }
+
+        $box.append($(document.createElement('p'))
+            .wiki(_name))
+            .append($(document.createElement('p'))
+                .wiki(text));
+
+        if ($output) {
+            if (!($output instanceof $)) {
+                $output = $($output);
+            }
+            $box.appendTo($output);
+        }
+
+        return $box;
+    }
+
+    setup.say = say;
+    setup.addCharacter = addCharacter;
+
+    Macro.add('character', {
+        // character macro
+        handler : function () {
+            addCharacter(this.args[0], this.args[1], this.args[2]);
+        }
+    });
+
+    $(document).one(':passagestart', function () {
+        // construct array of character names
+        var names = Array.from(characters.keys());
+        names.push('say');
+        // generate macros
+        Macro.add(names, {
+            tags : null,
+            handler : function () {
+                if (this.name !== 'say') {
+                    say(this.output, this.name, this.payload[0].contents);
+                } else {
+                    say(this.output, this.args[0], this.payload[0].contents, this.args[1]);
+                }
+            }
+        });
+    });
+}());
+
+</script><tw-tag name="行动" color="blue"></tw-tag><tw-tag name="暧昧" color="orange"></tw-tag><tw-tag name="理性" color="blue"></tw-tag><tw-tag name="感性" color="orange"></tw-tag><tw-tag name="章节" color="red"></tw-tag><tw-passagedata pid="1" name="开始" tags="" position="525,300" size="100,100">&lt;&lt;masteraudio stop&gt;&gt;&lt;&lt;audio &quot;Piano&quot; volume 0.65 play loop&gt;&gt;&lt;img src=&quot;assets/Best_Friends.png&quot;  style=&quot;width: 100%; height: auto; display: block; margin: 0 auto;&quot;&gt;
 &lt;div class=&quot;deco-line&quot;&gt;特别说明&lt;/div&gt;\
 本作是基于Onker同人文「未保存进度」改编的文字互动游戏。
 
@@ -2272,6 +2629,10 @@ Macro.add('message', {
 &lt;&lt;button &quot;了解&quot; &quot;第一章&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;/*[[第一章]]*/
 
 &lt;div class=&quot;deco-line&quot;&gt;更新日志&lt;/div&gt;\
+&lt;&lt;message &#39;v20250423.1&#39;&gt;&gt;\
+- 新增[[结束]]碎碎念
+&lt;&lt;/message&gt;&gt;
+
 &lt;&lt;message &#39;v20250422.1&#39;&gt;&gt;\
 - 新增[[第四章]]
 - 分支[[打斗]]、[[自由]]
@@ -2543,7 +2904,9 @@ Macro.add('message', {
 &lt;&lt;track &quot;Room&quot; own&gt;&gt;
 &lt;&lt;track &quot;boop&quot; volume 0.5&gt;&gt;
 &lt;&lt;track &quot;swish&quot; volume 0.3 own&gt;&gt;
-&lt;&lt;/createplaylist&gt;&gt; */</tw-passagedata><tw-passagedata pid="6" name="StoryAuthor" tags="" position="925,100" size="100,100">by MeowQAQ</tw-passagedata><tw-passagedata pid="7" name="StoryMenu" tags="" position="1050,100" size="100,100">/</tw-passagedata><tw-passagedata pid="8" name="样式表" tags="" position="525,75" size="100,100">/* 全局链接样式 */
+&lt;&lt;/createplaylist&gt;&gt; */
+
+</tw-passagedata><tw-passagedata pid="6" name="StoryAuthor" tags="" position="925,100" size="100,100">by MeowQAQ</tw-passagedata><tw-passagedata pid="7" name="StoryMenu" tags="" position="1050,100" size="100,100">/</tw-passagedata><tw-passagedata pid="8" name="样式表" tags="" position="525,75" size="100,100">/* 全局链接样式 */
 .passage a {
    /* color: #97492C;*/
     text-decoration: none;
@@ -4826,9 +5189,9 @@ Hearts: &lt;&lt;print $hearts&gt;&gt;
 #&lt;&lt;linkreplace &quot;再次质问。&quot; t8n&gt;&gt;&lt;&lt;set $challengeselected = true&gt;&gt;&lt;&lt;set $challengeSelectNum = 2&gt;&gt;&lt;&lt;replace &quot;#challengeLinkArea&quot;&gt;&gt;\
 &#39;&#39;&lt;font color=white&gt;李相赫&lt;/font&gt;&#39;&#39; - 
 “//你是受人指使还是自愿的？如果是有人强迫你怎么做，不要害怕，只要放我出去，会有人来帮助我们的。//”
-
-&#39;&#39;&lt;font color=white&gt;无情的质问&lt;/font&gt;&#39;&#39; - 
-李相赫的声音很//&lt;font color=#C53515&gt;温柔&lt;/font&gt;//，但在青年耳中却是一下又一下的重击。&lt;&lt;set $hearts -= 1&gt;&gt;
+&lt;&lt;set $hearts -= 1&gt;&gt;
+&#39;&#39;&lt;font color=white&gt;无情质问&lt;/font&gt;&#39;&#39; - 
+李相赫的声音很//&lt;font color=#C53515&gt;温柔&lt;/font&gt;//，但在青年耳中却是一下又一下的重击。
 
 &#39;&#39;&lt;font color=white&gt;李相赫&lt;/font&gt;&#39;&#39; - 
 “//或者你的目的是什么？是为了钱，还是为了……//”
@@ -4876,8 +5239,19 @@ Hearts: &lt;&lt;print $hearts&gt;&gt;
 测试：Pomelo＾
 
 
-
 &lt;&lt;button &quot;返回&quot; &quot;开始&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;/*[[开始]]*/
+
+
+
+
+&lt;&lt;say &#39;Pomelo＾&#39; &#39;assets/Pomelo＾.jpg&#39;&gt;&gt;不会真有欧克批扣好感吧哈哈&lt;&lt;/say&gt;&gt;
+
+&lt;&lt;say &#39;MeowQAQ&#39; &#39;assets/MeowQAQ.jpg&#39;&gt;&gt;06的中单哟，请问你掉的是黑发的欧欧还是白发的欧欧~&lt;&lt;/say&gt;&gt;
+
+&lt;&lt;say &#39;Pomelo＾&#39; &#39;assets/Pomelo＾.jpg&#39;&gt;&gt;很荣幸能先试玩测试！！作者真的炒鸡棒呀，见证她一个人亲手做了这么久又用心很感动，其实我根本也没测试什么，原版就已经很好看很好玩嘞，希望大家玩完可以多多支持onker！还可以去lofter看看原同人文，Meow老师的其他文也都很好看！！满分推荐~&lt;&lt;/say&gt;&gt;
+
+&lt;&lt;say &#39;MeowQAQ&#39; &#39;assets/MeowQAQ.jpg&#39;&gt;&gt;入坑以来真的很感谢小伙伴们的点赞支持，如果说刚开始只是心血来潮写文的话，那现在我希望有更多的人看见我们中野！包甜的！！我拿自己那份冠军做担保。另外，咳咳，如果不是特别感兴趣就不要去看原作了，因为作者本人都看不下去，但又懒得修文……&lt;&lt;/say&gt;&gt;
+
 </tw-passagedata><tw-passagedata pid="40" name="离开房间" tags="" position="1700,500" size="100,100">&#39;&#39;&lt;font color=white&gt;青年&lt;/font&gt;&#39;&#39; - 
 这声脆响似乎瞬间让青年//&lt;font color=#E64F17&gt;成熟&lt;/font&gt;//了许多，他收起脆弱的表情，将李相赫拉到床边坐下。
 
@@ -5462,7 +5836,7 @@ Hearts: &lt;&lt;print $hearts&gt;&gt;
 &lt;div id=&quot;nameLinkArea&quot;&gt;&lt;/div&gt;
 
  &lt;&lt;/linkappend&gt;&gt; &lt;&lt;/linkappend&gt;&gt;&lt;&lt;/linkappend&gt;&gt;&lt;&lt;/linkappend&gt;&gt;&lt;&lt;/linkappend&gt;&gt;</tw-passagedata><tw-passagedata pid="48" name="一模一样" tags="" position="1575,1925" size="100,100">&#39;&#39;&lt;font color=white&gt;李相赫&lt;/font&gt;&#39;&#39; - 
-经过怎么一搅和，他的心情奇迹般//&lt;font color=#E64F17&gt;放松&lt;/font&gt;//下来。
+经过这么一搅和，他心情奇迹般地//&lt;font color=#E64F17&gt;放松&lt;/font&gt;//下来。
 
 &lt;&lt;fadein 2s 1s&gt;&gt;可就在这时……
 
